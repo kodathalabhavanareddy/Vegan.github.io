@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/771e3bf459.js" crossorigin="anonymous"></script>
+
+
+  <title>VeGan</title>
+</head>
+<style>
+  .log {
+    padding: 5px;
+  }
+
+  .relimage {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+  }
+
+  .img3 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .col.mb-4 {
+    transition: 0.5ms;
+  }
+
+  .col.mb-4:hover {
+    transform: translateY(-20px);
+  }
+
+  nav ul li {
+    padding: 13px;
+  }
+
+  nav ul li a {
+    position: relative;
+
+  }
+
+  nav ul li a::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: green;
+    left: 0;
+    bottom: -1px;
+    position: absolute;
+    transition: 0.5s;
+
+  }
+
+  nav ul li a:hover::after {
+    width: 60px;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    background-color: rgb(228, 228, 227);
+  }
+
+  .fa-brands {
+    padding: 10px;
+    font-size: large;
+  }
+</style>
+
+<body>
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+    <a class="navbar-brand" href="#"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSksBtuBw-fW2sJiziOgd4pdtzo_DDxEHBqyQ&usqp=CAU" height=70px width=70px
+        alt="vegan"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#plan">Plan</a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#recipes">Recipes</a>
+
+        </li>
+
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+
+      <!-- LOGIN -->
+      <div class="log">
+        <button class="btn btn-success" data-toggle="modal" data-target="#LoginModal">Login</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- CREATING MODAL -->
+
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="LoginModalLabel">Login to Vegan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-success">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- signup Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword2">Confirm Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword2">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="home">
+    <div class="container">
+      <!-- <img src="https://source.unsplash.com/1400x400/?vegan"> -->
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://source.unsplash.com/1200x500/?vegan food" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>VEGAN Lovers</h5>
+              <p>We don't have any vegetable jokes yet, so if you do lettuce know</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/1200x500/?vegan pasta" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Love Animals</h5>
+              <p>It takes nothing away from a human to be kind to an animal</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/1200x500/?vegan,soup" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>go VEGAN</h5>
+              <p>Feel the beets..lose the meats..</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div><br><br>
+  <!-- meal plan -->
+  <div id="plan">
+    <div class="container">
+      <h1>A Complete Vegan Meal Plan
+      </h1>
+      <p>
+        Vegan diets have been linked to a variety of health benefits, including improved weight
+        management and protection against certain chronic diseases.
+
+      <p>However, finding balanced, healthy meals on a vegan diet can often be difficult and
+        overwhelming.</p>
+
+      <p>If improperly planned, vegan diets may cause nutritional deficiencies and health problems.
+
+        This article provides a healthy vegan meal plan and sample menu to get you started.
+      </p>
+
+
+      <div class="img">
+
+        <img
+          src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/product/kwds/diet-chart/Vegan-Diet-Chart-v1.jpg"
+          class="img-fluid" alt="Responsive image">
+      </div>
+      <h3>Vegan Shopping List</h3>
+
+      <p>A healthy vegan diet should contain a variety of whole grains, proteins, healthy fats, and fruits and
+        vegetables.</p>
+      <p>Foods like nuts, seeds, legumes, soy products, and nutritional yeast can all help boost your protein intake</a>
+        throughout the day.</p>
+      <p>Meanwhile, avocado oil, coconut oil, and olive oil are nutritious, vegan-friendly choices for healthy fats</a>.
+      </p>
+      <div class="img3">
+        <img src="https://cdn.britannica.com/05/114705-004-A92E5966/food-pyramid-meat-animal-products.jpg"
+          class="img-fluid" alt="Responsive image">
+      </div>
+      <div class="relimage">
+        <div class="freshproduce">
+          <!-- <h3>Fresh Produce</h3>
+    <ul class="hl-long-line1"><li><strong>Vegetables: </strong>asparagus, bell peppers, broccoli, cabbage, carrots, cauliflower, garlic, kale, onions, potatoes, spinach, tomatoes, zucchini, etc.</li>
+        <br>
+        <li><strong>Fruits: </strong>apples, bananas, blueberries, grapes, grapefruit, lemons, limes, kiwis, oranges, peaches, pears, pomegranates, strawberries, etc.</li></ul>
+    </div>
+    <div class="vegimg">
+     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS35QxwzbxgRrlRFPyjea7qql8-dKw2Q-6Q2o1k8k26n0qZKNahB4twqejmGOIBFlzB0ik&usqp=CAU">
+    </div></div> -->
+          <b>NOTE</b>: Note that many processed vegan products found at the store- such as <b>vegan meat
+            substitutes</b>-are often loaded with sodium,filters,additives,and </p>
+          <p>other ingredients that may harm your health.</p>
+          <p>Be it for health, environmental or some other reason, many people these days are opting for vegan diet
+            plans.
+          <p>Vegan diet refers to excluding all the animal products from the diet plan, be it milk or milk products as
+            well.
+          </p>
+          <p>The vegan diet focuses on plant-based foods and beverages and eliminates all products that involve animals
+            in any processing.
+          </p>
+          <p>It includes mainly fruits, vegetables, grains, pulses, nuts.Vegan diets are the best if you really want to
+            shed those extra pounds. They are rich in proteins and vitamins and free of carbs and fats. </p>
+          <p>If you are new to it and have difficulties following it regularly, there are varieties of vegan diets that
+            you can adapt like a whole-food vegan diet that includes whole grains, legumes, vegetables, nuts etc. </p>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- recipes -->
+    <div id="recipes">
+      <div class="container">
+
+        <h1>40+Vegan Recipes</h1><br>
+
+        <div class="row row-cols-1 row-cols-md-3">
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs5XLTQBroJpKPts2f1kqBmMfxODWux4TBjg&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Creamy Vegan pasta</h5>
+                <p class="card-text">Creamy vegan pasta sauce,small shell pasta,extra-virgin olive oil,yellow onion
+                  small,broccoli florets</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://www.forksoverknives.com/wp-content/uploads/spaghetti-meatballs-wordpress-1.jpg"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Spagetti Meatballs</h5>
+                <p class="card-text">Vegan cream,cheese,italian sausage,ground beef,14 oz super firm tofu,soy
+                  sauce,cornstarch</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYWFRgWFhYYGRgaHB4ZGhwcHCMcGhwaHiEeGhweGhwcIS4lIyErJBocJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QHhISHzQrJSs0NzQ0NDQ0NDQ0NDY0MTQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIALcBEwMBIgACEQEDEQH/xAAbAAAABwEAAAAAAAAAAAAAAAAAAQIDBAUGB//EAEAQAAIBAgQEAwYEBQMBCQEAAAECEQADBBIhMQVBUWEicYEGEzKRobFCwdHwFFJyguEjYvGSFiRDU3OissLSFf/EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EACoRAAICAgIBAwMEAwEAAAAAAAABAhEDIRIxQQQiUWFxsROBocGR4fFC/9oADAMBAAIRAxEAPwDq9AACjn7UUUAGTSaOKUBQMSBQFHNAUAA0lqMmijWkAQmjWlUVMQGpOWlGiFMALyoNRiktSAJWpS02uhpxaYAmkClnnSKAFIaVFIWlqaQwiKhDiKF3RiEZWVRmIGbN8JXzIIjtU1qzXtVhoe3dOgnIx6BoAb+1sp9KjJNxVl44qT4s0IalTPaofDsUXQMw8Q8Ljo66N+vkRUmrTTVohpp0wqUd+1EvKlzTEGKBFHQntQA3FEp3pcUkjemARpUUU0FNIAwKICi1oQaADoUIoUwHjvQoGgKkATRTrRmhQMAFHRUKACAoUdNPiFUwTr2k/ONqAocFAVGGKXWA30/M0psSBqQ3yn7UrQ6ZIIpMU0uLQ/iA8/D96UryDGvlTE0L9KbJ1pwUmOnOgQS0sCiI1owKAAKJhQXnRGgYFozSV3NLIoAQXqHxXDi5aZDzBqXl6UTJUTjyi0VCXGSZl/Z3GEFVY6tNt/8A1U0B/uWD6CtIGrK4nDFcRcQaZ1DoelxIg/atBhsar2hdbQQcw/lYaMPQzWPp56cX4Ns8d8l5Jj3FUZmIUDckwB5k1m+Me2Vq3K2VN19tPhBO0nnqKo+K8RbGNCsyWEbUjUPGkEefPvTdjCeFVIGYkSOhIgT2DEb9TXRtmFJDtrjGLvKM1zJmIOVANBpyAJ9SV9al2sHdkn+JuMw0K58sbCYO66EyOhG+0NVRdnCGf5ZjQmABseQzHrpUu4xa0txBnJOYAjSSIOfUFz8R107aiplOMU2/AWGl/EocyXWI1AD6gkaaHdjvtNWWH9oLqH/vFsKv86n6kHlOnoelQ8BiR8LoyvGh3Uhf98QDrOXYAaARFNW8Reu3WQBURMpIb4iCO+raEidhJFZS9RGKTW7+BWjXYbFI4zIwYHofyqRNZa7hVsPns/E26A6ETJMHQbn5VZ4Dia3FBG/MdD0raElJWgaotS0c6GaTTaEGnRViFRRUc0KAFTt5UM2tDp5UIpALJooopo6BhE0TOFBJ2Ak0DVbeum4xA0QGP6o/L9KTdDSsc98z9h+9+tAWY/SnrSQNKcilRQxkG1EizOkR9akKgmq/inGLVmQTnfki6meWY7KPOkwVvSH2tdppD4ZQMz5QOrQPqay+M9or76KVtL0XVo7sfyFU91S852Zp5sxJ9CTpWbmvBrHC32zaPxGwun8Qo/pYt57TTacZT8OInlBQn56DpWRtKF2/Zp4N+tLmy/0V8mwt8ct/+YnrK/eanWschEgg+RzfasIhmpFq2J5Dy0P0NUsjJeFG5S+h2bXpsfkdaUrVlbeIcCA2YbQ4zacxNP28Xl0l0noZSZ2E6DygVamZPG0aJTQJ1+VV1nFOJPhcdvCf0+1P28ajGJKk6Qwgk9uR9CapNEOLJApQakTQU60xFD7TJkZLo/AwJ8tm+lZn2ye4kBGi1cOdh0YASQe8D61veJYcPbZTWEw9k3LWIwryXtMXTqUedJPRs3oVrhn7Ml/udkffjr9iBgLwRFBaBoQNhHLUEA+cVJuYpQj3WYkSFCK+rMdcz6SolZmddqosBjkUqlxmCDRwBm0nQQfhBOnll9LdOGhlD2XQo5iS2idFJmCBtW3qMzjG40cE7RTY3GvdEpbdUUSoUf6cTDHMdSSdzM1vsNw+bCPf/wBJzHu0Qww00U/zExJHLas9f47baxbtOmQJNt4UhIZQSJHUSdNdjUO7xY3bbXHtgmXSy7uTkAUAFR+EkmM2+/SvNlkk7VaZKaQ7xL2ldFNolEYx47hzFeyFARIjfeq7B8cxN2+EN8XBELkELrpvlB079Kz/ABG0WQshEgLMklngZmZQVEBYiRND2XRnvIDcZCAYywPPL3id+lb4/T3Cl2Cbo3WCxty1ixaU5kAXOGMhZE68+Y+dWmPf3b+9Qko2p57xLacp68/OsfjcM9tbwyO7u5D3CJc285Hh8wvKug8OwmfDACCuU6kDmI266K2vfrXXgi4R4/BpGW6JWAx8gVaWrmbWsZgr5X006+laTCXgQOVdVCei0ijppSaFAEugaKNaFSUKmijeiFLNAEPGv+Ebnf8Ap5/PaitIFECjeCxPp8qMnnUFeA89ElyZMiF3PIeZpjNmOUGAQZ7ARr2HespxfigvRbt6WUMaf+IdpMaZecUpSouMeRM4t7Rl5TDnKuxf8Tf0dB3+Ub1nivPnv676nnSy2g5fvpTlnCFtS0CPPTXXsOUnesW22bKorRFbEqDGk0174yZiOUHXbWfXpVD7SX1tHKniZtmkbf7hQ9nMa7q4caLrmIAgcxOmoqE/a5PRrC5Piuy5/wD6CAwWAbodO061KOIgSQY0g1U4jH2rWJXLbVdlZjz8MhtdqhcRxrXmYIfBmIOug8qy/Vla1o6l6deWa2xdB1qbZcGsLgcYEdUzaGPIctK2vDsJcdcyiZ5bGI76Vp+rFVbq+jCWNq/oWloVNRBEf8VAxbLh0D3JGomNQoPMxrSXxhdAbBLSRmYDVVjUiedW8sIxuzFQcnomfwrJrbJO5yE7/wBPTy+1O2rq3AVYQwHiU7iqfi2M/hgjozEbFHYsWG5ILGVYeo7U5bxqYlQ9pouLr37r0ow5o5E3EU8Ukky1S4yRlOYdGP2bcesjyqfhcYr7SCN1OhHn+u1VODxKuO40IPIjqKF20fiBhhsRuO3cV0KVGDimXeLMI8b5TWBx2NFq9YxY+BwFuafgbwtPSDB/trWYfGh1a2/hcqR2aRuv6Vh+HL73C3rLCGtszKOYUkzzOxB+dYZ10zTDq18lN7ZcIFrEnXKlwgyO51jT1+VTOMlLBS3ZUZHQFgGgBgYDgnnEecU+5/jOHyw/1sK2R+pCQVPqseoNZWxxgG6jOJWco5HXn00J+lcvuuu6v/Rjnju/ku8OrMl5HYMHYXU0kjJ4WYea6R2qquX7twrYtlQq/CJGaJ8tWmdhV2ntHazvfdFBOZQ0qxKlSAANNJAmT1jvB9isI2IxFxlCqFzPyMEhhAPMFcwqNpOUl1+Tlr4I3ELR9y7AFnYCTbHhWCNHOUDvHloahezmLS04fIXdTtIC/wC6NNDvrWms+0+axcs3En3KsquDow1M5TEHlzmsXwDh7XLqrsCuYk9tJrbG2otydVuy6pHZuF4+3ibDqwOeCrAr8JIlVUiZjTbXnGsU57P4ZkuRByqvi0yg5hvtDHc6bSBWe4DicNZT3LOAUOcsCYYmBLkxB3Md9NhG5wWJR1DIwddwVMjUSfJtf/d3IrqjFZGpXdFRMq4Au3AOTd+eo5+VWeAeq2+Ab1w9XP00qxwBE7V1R6Kl2XCv3oUSNoNKFBJa9KKjjbyoyKgYBypu+8KflTtQ8Y2uX1P2H50n0UuxtDGtE7nkJpTrAGugpjE4tbSPcb4UE+Z2UepgVBXZTe1HEIH8OhgsJukHYfhSe+57edUIk+FdSdvTlUcXi7M7mWYlie51/wAelTeF23LhwumkyYEHnvsKxk7Z0JcUJwuHJJLgRtlOp+Q/fyqz4cguM4W3lAhZkEHQ+HQkaDX1qwGAa7lIYKoJ1EMHzDf7xvvtVvwvBpbTKogbwYkHmCRpNQrk/oZuRxb2r9n3W4SAGgkE7ZZOkjnI6VL4VZAa2moMawJkmQcwro3H1QxCQz6sTM5R85rOHgz5CUfIAcy6wATBKxlPi0Go6eYrHJuLin0d2Cai1Ku9FfxzhKuwldzHYnl+lZLiqfw5ZYyzso6+ddSwmBe4Fa4cpA1AE6+o0NUftJ7KYe80+8KOP9whv7W/LpXD6XLTqb0dk8iaqPZmvY/gxuOXuyMhgq2mvIEHvy7V1vBWgoCkxp1+lYXgHCltDKHDEHw6kK3cgncdBWgwd7Es4DqigAmQDtJAA8Wpqc83KfJdL8GOTH7av7mixVhcupnT6VV8EuKiu8CCYA2EiRPr+VUPGOL3LDMSXe2RqNgscx0qtw/tIjqVZSi5iwGYww1mSBJ5U7b90Fqv5IjhfGm+y49qLdq8hGu+uuoPUGsXgMU2Gv5QSFqbxniKo6lJg6aGQRVHjcRmKsd5+ldHpIzjL6M1zwUcdfB0xbwZVvoAD+OOYP7+gqwR8wzD4Ymf3zrJeymP/A2qkQR2O4q4Z3tkoTIkwevT6R6zXqnksn4mxnEjRhqpG4I2IqiQe5xraRbuQcscnEMZj+brVnhscZM1V+0xDBYbK4bMh38UHT1APr50mlJUF07I2AP8PjXtlfBdUo57z4CR6x/fWB9p+HHD4l1EgSSscvX971vMff8AeWkvEZWIKXOqsNJ+YBqJ7WYUYmzbvp8YgMY5jr2NcqfGm/s/6NckeUWl91/ZluJ4l7WGS2LC21cBs+UF3Xcy+43186e4Txv+HS4yaO+QrpC6BlObLyII6TVnjcf73IjoItgls+2sABetQbGHhIye9Db6TlaGOmmghR2jXlT1KHu+Tz3oreLs7+7GVQrw3hEBpO55nX706lxrbL4QwgIR18vOtxwrDYa7w5rLqqXUDMrtAcKSSrAnUgGVj/b3rP8ACvZ17yhGIBzhi2aWjURl350RTkqS0gp6ZP8AY7ga3rzs6AKpgoxOYHSNAIM66GulXyLFolVACggAmAROgXTXYcvWqb2X4Q2HdjvI1dvi8RWFknXYk+kUjj3EfeMqIPCs9pM9NoHfma7MSXFJKioqtkLCEkEn4iZPnzq6wqRUDBWoG2lXVlQANI862Bjqp50KXlPU/OhSsktenlQoTtRVJYcVWM5zux2JgeS6fr86sbr5VLdAarYkA8zUyLiOJ4tSKzHtxiwotWgdyXbyXwqDHck/21q0txXNvbLFBsY4nRAqf9IzR/1Mazk6RriVyBbgso1gnlvFajhXDrYDDUhhBPWREDlWT4NYvMQ+QhCCubUanQZfLrVy/EriauihT4ZDzAjUbDUweVcks0E+LezqeGUukXHA7funFlQ2SCc26lhzUjYkbjqK0t91RZYj12mqbgmNVk8HwiAOXXmO+lM8ZwT4gqPeFUchcq75QGLE6b/CB608bUY0tvwc/Bc6k6RC9puKW7IU3HAQzAGp2GoG8d/KqGzx7O+VUdUyM45mQSNh1ggDzqJc9lrgvNaFwulsFgXhW3ELJkFQMusRrEVHxFrELcdksrbuMTmVVJZp8QOpPQagAAGscsFvl519Dvx8I0o7Zob3tOpCqAUQ6ZvxFpiCvIVJuYG065souDKDHNiOU9aw/GbDtNzEXVRxBggq28TliGIBkxrpWj9ncU1hcl51iJW5rlZGErAIlSe8CuTLh9qlA0UklrT/ACJ4vjCEVQuQgrlIXwzo0T1EH5etO4fi+UDMYO4GwA1jcmPLaonEMSjKbixlGijeW11bkDHbWKreKX092Ao1ZQ0zPp28qhQclxa7OlKLW0RfaD2pDSqeLcMSIAA6AjWevY1nMNxUlwNDsABoNu/P86r+IX2d26THy5eVTOH8Ga5bZwJymT1OmoJ+lerDBjxwo8yeaTlrovzxG06+IQMwAB3JM+IDbl1qBj7qtGkEE6zM1EbD5gEnQBQukeMkAb+cehpePtLYulGJbwjMe/YdKmEIqSoUs7lFxa2aDgDEOIracUt50V9dBlPpqP8A7Vi+AurEZSY5GIJ9K3lyzmsneRB+RBI9a7V0cr7M8MUTEaVH4q+ZJkyGU/UH9aDaEidpimMavgbmYmpXYMuHsZrTjXxeL+4Dl5gfSqjgGKVluYdp1MaxGblEeXnWhws5I3JE+o1/xVVg8Bbdn8MOpzow3ynb5afOoy47k18r+UaQl7U/h/wxXB8EjZkcTm8LSdo6fvpWl4XwZLcZZYxALEac+nP9ekHJcTwzm6j23yFtxOhI3B+X1qxtY7EosFzpzgE/M851qsSjPGk19DDLjqZdr7Jrcue9ukL+FUXYIJ0+Z+sctbK5aw+H6LHLn6Dasu2OxLD44GuoEdOnkBR2MI7GWYsepnnvA9K1hHiqSoikTcdxRrhyhcqxsDDHmJ7fpUfD4czruamYfB9tf+amph+0VolRLYnD2oFWFpJNJsW9KkItNiHMh60KVmoqQEyNvKgaEbUJ23pDI/EHOUL/ADED03NJtqNKRinJcDko+p/YpaRUeS/Aob+tcg4rdLYm4T+K+w+TH8h9K7ABrNcb46PG5Eytx206hz99qxzJuNI6fTNKVs6ALAGGVW0gyCOca61lPaA51UoxI8QMiRmE6BhtIBO2kb603iPaEvYC7gQQTy7bc9qpsQ1yLbBdfGQVbKxymGU88wIBEHblvXk48Tc+UvB6iXCNt9sV7Oe1T2CwKl1ZgTLawPzrq3BuI2riq6MCGMr/AFEZSsDmOlctwPsq+dWOR0lWJBIkSPCAOq/Kun8Js5FyogCTICrlAkxI79T513RiuVo4c/GW/JM4lCI9xgCAvTUL06VnPZ26rsTKqjDMq/CwnUyJ1GmnatLxe6VsuwjkDI3BMEfWqbD8OHuHLBVZ55aAdOv/ADXP617Sr6j9O0sbvy6F8Ww+Fa7bF/RgQyT8DEaAHp9JrOe1dtGzIo8bwJGxYCFkHQAD7UzxlnAFlJaBqJ10+GJ2APKoS4EtaCvcKuWIPiDBl0AAK89Y11B30rljJySk9JM0hKGOTTdsg2eEYm9h0ClFVWIzNozrmLCCJhVLN0nvAh/D+zV0qR7xCARJCz8J1gEa+UgHnWrt2wiraVlhUWQw1DRqCRI7+tO4W1kklhprA5neJ9KmXqpOVKjojJOLaMDxj2NRXzI5CkFmBE5WEFgIUCJO3KmuGXjYW4kg5gCoII1Oh1E6RlPL4u01e+0GOZrltFVGJJcDN8RaFyMCY5DTTbeswuMCtLBjoFWWzDSRMnYARp2r0ISnOFy/wYzjHSoTxMqFDKF8ACoVUiSpWGeRrMN3k9Ki4i0+Juy3hZhoABp2Y/vlQGLV3XQuoMkTAJnlA2/zWgv31hSgUEACcoG+8kak+dNzcK1sUMccjb+BPArQtuqE7ddx5103C2/9NucqR15fs1xninFma6ro0ZYXb4o6+ddl4K+axmP8p+1dmJtxt9nFmjxlowmM+MehPbSmMZOQ9I1peNM3N4gD7Uzjj4D0imSanCtCiOn5VEu/6V9G2BOQ9Mr7fI//ABqVh5yj98hT+I4acRCrAJEa6Dr08/nWmSLaTXaIxSSbT6YzxrDGPDodGXs66/UfapmGcOiuIhgCB06g9wdPSncTZOTK2rqBJ5Fhz8j+dI4RgLlsOrplRmDpJEwRLCOWuuvU1EFxyP4e/wBypNSxr5Wv2HbGGmp9rC60lBBqcjgmO1dBzDIsU4bXKpCgUuKVgRlQ08i05pSAaADoUPWhQBIB28qE0JOnlQ6UhkFnl28yPlpTmnrUe2Zn+o/c04WrM0Y+Nq5J7RYcriLybeMn0YBvua6sLkisP7aYUC+j/huJB80P3IYfKon1ZpidMz3CuDq6MBdCuZhdDtyYHXqZE71q+EezhRELFi5MFzByINQEEQJJJjvrVNwZSbqhVSBvmjNlMyEncx+9a6ZYaVlhH70isJ4lNbNJ5JVxvRV43BQiosCdDp1/e1TcNbynJMwo12E9htyqTft51MrrynY8taNcoWOkT1nlQo07M3K1RScc4zkVla2QNjmMT5AAg+hqnwvG0KBTII0Gh6SPLStdibSMpJJAiT0M9ZrlnttjPclTaAV4JbxEkmRELsOfnNcWfHKc0m/sb+mlFPjLokcVuot5LpVHTNJRtQREbc6sOJcXwVxWV8tvJK/DlKkb5TsYBkRNc4XD3GYXGcc8gUSCwgkMDEL8QkSZG1S+NYd2VHOYGAYIysARuQdSIgT5Va9PxpN/9NMuOM05R01/JpA5W0bitnLalpzT0+kU4bjouZpBjcaxppofSqXguIYYfNZuhXtyXttGo5NlO4I0NJxfGnvKGcIqkkb5fCIJA3AOvfyNYr0z5P7nRhzJR4kbHXWc5y+ZgqDVg+QmdDOwkMYiBMVSY627Cd+cDnqZIAqxe98TBAqhoXXMZAkS2TXrsu1SuGXVHiKBiwIAaQAecAaEV3x9r2Y5pWtFVgHZIUiCSGGmoDL9iD9qcZiWKAHNyjbXrVni+GgurWkyA6Fc0gepio/uXR8uQ5m5n6c6UqbtbKxzSj3Qxh8IRcQsQZ1gV2fhahMPvHhrnfAeCM93OywqiB1Jrb8dxws2VTUkwANh4dZ8q6IWo7OPNJSlUejGYtc11iNp+g0/Ko+JEgD0paN11JpUQvKdIHkZ3p+TM1VkaDXQVY4dwhVuYP8AzWbtcTUfhbl319POrHB8RV2yg+ICcp3A22rdNMyao0fErXiDDZhNSLBz2o/Fb+3L6aU1bbPZ7pp+Y+lReGYjJc1JhvCZ77fWjwSOE86ewynNJoYu3kYiO4prDXTMUwZYrypwUzbNPRQIEdaAoUoCgYmKFLihQId6UGPlQB20os20VIyqRod16H76j71Izik4+1BzjlAbpHX0+1J0ieVR0zXvYsxsD3qq49hM9hjEm3LjuIhgPSasmorcjnz2/WkxrRz7htgGDOvLl0gz61u+FYx3GUtrJGoCyf8AaBqY86ouMYP3VzwjwPLL67r2/wCO9T+DjX4J6noBuAPSs2qKk7VlrfLFhlU6GS/ccmHTSl4fBHVnYsdo1CgdABVb/wBogyu1tVATcOcrk/0xTuG4wz2WuFWQKCSDvoNT5HpXNyx8r7/BN/BZWgWBG6kzPbp+dc99pvZcsly4zSFzMCBPhksS1abhvEGKBhr8XM/CScsmekfKhfYsroDmWPEmktOuU6ba0uUXUqLit8jk7YW3cttkaCrCBEEKBoxg6g9hzNFYw5a2ufM0KWbUkhY8MddgZPlsKv8AHezbrdzlPd5iSudgyKOiqNfITUfinD7zMip4QzKpldh/MF+en60nJy0dKk5aiR8Rh7BWyq+F3jUiDqNzl0yzU7huBt5yGQEDUNPhLBgrMMwgDVdTsSKt24fhlRWIksCquwyww5bQACOUfLSqP2rxJKBMqBfEJXWSWzZuUEhB3OvXTKHu020bY1KMfdsoeKFS5Cuz5YCnLMKJGWZ8Mcome3O0wF227Kn44mI0gDl3qww2CSzhUuXCoZgSoMZRtIMak+Lb9Kqr7/6qOsLsZEaKew7HateX/lrRlSyN14Ly1lRZK6kyB32HpUi3gwWLKpCkAnQxMwY08pqDj8UpNtg0iCs7Hrryq34c6mDm7aV144pHLJ+C5wFgBY0Gw/fz+orN+0ON97dJU+EeBfIHU+p+1WXEuIFEyARm78uckfvWs8jzuP8AAq270hKNKxK2+X+Zpx0gdzsAJ+lLZqmcAskuznWIA9dT+VEVboUnSsrsjA/Cw/tP6Va8FsZrgYg+FTqdNTH6Ve+5mTvUyxpGgHetFBJ2ZudqiZww+IryYfUVHxGGAnz0qQhAIPTUU7xBRvyYVfkgVebPbV9yujfY/kajsNfSlcIuDM1s7Ny70TW9xzEigB6wdqlA1CsHaplugQulc6IGjBoAE0dJzjrQoGPEbURojyjpRGkAYNV9/CsolBI5r/8An9KsBQBpNWNOijs4oN1HUHcVKVh1qVicIr67N/MN/Xr61X4jCumsZh/t3/6f0qHFo05JisRaW4mRusg/yt1rP32uWiVLMIEzO/eNqurN9W0B1G4Oh+RqJxPhYuqQGKtOYHWJ7joecVMtlIi3MaLlsZ2yOdEAkSOp7kg9ajXMQ6J8egRsyvBd1AjPC+RJHQjlvA90Uco65XHI7MOq9RzqZhrKqxYKJII5jfeYI371k4Jl9Fxwq2VCpdbO0MxISFEEAJAnXWNOlW+UKDAAadO56mq3CYo+E5QGDxIEjKxliZ167Tqal3OJqzqijXxAyGBJAnw6RG+po4JLRLezPe2F7NaZ1ILL4kX4mkGZhZOaduQqFisW1y3bd1ZbiqrMirOd+iwdJ1POO9ScTmfMjL7tg0hgDv4zI8lExvpzqRgbAYu182hkhVcGRmJMHM34oA0nnyqODl2bxyKKVdozvFME15ip94uXxlSD4VnMchPhjv8AeKpcRgB7tw91wVYqUUZkkHR55ghQZ5xXS+D286gkKARAAkAcj4SYI00P/NZD2nsqjtpPiICjaDJ25wRy61jODglR2Yc36snFrwU5tzkU2kuNlksrSwzZkh3Mj4ZBWBGbsDUO5a90rg84CDnHLWl4jir21lFXMx+HYL6ch2qHYwF3EvmaSCZjkKeOEp99E5ZwxpxXY/h2NwqFHh3iIgnef1rXYZFtpnaTGwHM8oFN4Lg62FDPGbkOZ76cqZxOJLkzp5bD9/TWuxvwjgS8sZxN0uSTqft28hTaJrUtLHXnQRIER/nyoSoluxhln7Ve8AseAMd2YmPoPoKo3BmOpAHmdq12Bs5ERR+EAVpBbsib1RIRNNaeQmNBSMum/b7U+u23yNamIFt6U9lJAB1ApCmnEoAj5MrT9alIs0Mk05bWNqQDKLFPK1GRPKkxQA9n6UGNNoaUTQAmKOjmioGSBy8qMjahGvpSppAAUS0YNBaADPKiaNRQI1pLCgBm9hEcQyg/l5HlTC8OK/CxP9RzfUmfrU4HSj21ilQ02iix+BDjK9oneGUyR3GoI9KoruGe2dJdRrtFweYMZuk+WlbhTNIu4ZW3E1LimXHI0ZLCYpWjKR3HP1B256VPR9OfY8/3+lS8XwO2/iiG67H0I1qrPCL6GEfMo5Pqfnp96ji0WpRfkkPh1eQ2viDGdZgMI17MaetWlEAAdR2qtVcSh1tqf6SdfSCPrRPxG4vxWiO5fSfMilb+Cq+GXVuB568ufaqD2n9nnvuHVwMqxl/EzctdoijbjFwiFRB3zk6doApq9xG4RGcL/SsfU1MqkqaLg3B2mVGG9klSHvuF7Hc1Y/xKWgVsJv8AjbbSIyj50w2pkzPckn60l7MmZ/OhJ9Cct2NDM5MkzzJ3NLXCwafROZp1YMkGqSohuyLbskHfTpQxDBQTT+bT8qgfwr3mgfDzPL58/SnV9C+4/wAJsm44YjRdexY/p+dapV21qPgMCttAi8vqec1Oy7VtFUjKTthe7pQX/NKZaPXypkidaWi/vlR5dNzRLzoAcQGnwNaZXrTqa60CF0mKMbUDQASmlKNabajVqBjn72oUATQoAcU7Uo0KFIAgaVNChSGEpmk9zQoUxBp1o3NChQA2jmnBQoUANvNItazR0KAFlBUa9ZB3FChSGQX4TbM+EH0H33qFc4Qh2BWN/EfOhQoHbIx4MNfE2h7fpRDg5jRzJjkCPyoUKVIOTGhwR+VwHzX/ADQHBGn4xp/t6+tChRSHzY+vBlB8RLa7HQfIVYJZAEAADtR0KpEttjqpT2XShQpiFRQC6UVCgA8tGBQoUCFU8KFCgAxRxQoUDG3G9JShQoAVmNChQoEf/9k="
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Easy Vegan</h5>
+                <p class="card-text">14 oz super firm tofu,soy sauce,cornstarch,rice,broccoli</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_McxMYSa3UiBTSKEgNehD1u3oAAu-Oh8cSw&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Buddha Bowls</h5>
+                <p class="card-text">large sweet potato,extra-virgin olive oil,watermelon radish or 2 red
+                  radishes,medium carrots,red cabbage</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlJDqjfFx2eWbB5Ut_OXkqs22ifdfg-aSYMA&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Mushroom,barley and sausage stuffed Delicata</h5>
+                <p class="card-text">olive oil,medium sized delicata squash,halved and seeds ,melted butter,mayle
+                  syrup,salt and pepper</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img src="https://ichef.bbci.co.uk/images/ic/832xn/p0bh2ln5.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">cauliflower Alfredo Pasta</h5>
+                <p class="card-text">oz pasta,cauliflower,olives,vegetable broth,onion,creamy pasta sauce</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDCdCNRCT8OmOdllvZuqwQhpK0IKRIPRR9IJs0uHImy8_FsyqrK-FpEzk2XOrmjYIu7O0&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Vegan Budha bowl</h5>
+                <p class="card-text">Quimoa,chickpeas,greens,red pepper sauce ,avacado,seasame seeds for garnish</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqolazUAqoDBtrbO7Aifz-22VEnjVdz0tlHQ&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Spinach Salad with Granola Croutons</h5>
+                <p class="card-text">spinach leaves,sliced radish,strawbwerries,blueberries,avacado,dragon fruit,granole
+                  barss</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl79kp7qXEfmGHNMNXgchk_nnb6pELsawqFQYKTd83v-1wVDCmIF1yU_UsG_Uarwlge3k&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Savory chat</h5>
+                <p class="card-text">Beets,coconut,cheesecake,gazpancho,bananas</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqnOLsFaNATpXb1dypxgeslWfdIMaBYvdpUE6NHI_ttCs_PdGuSvefubRuoPKHqSp8cIA&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Best Tofu receipe</h5>
+                <p class="card-text">14 oz super firm tofu,soy sauce,cornstarch,rice,broccoli</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_TFPjcDhAhZmhLXcpZWUMXgiGd6P4JJSvvA&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Vegan Crunchwrap Supreme</h5>
+                <p class="card-text">olive oil,firm tofu,taco seasoning,chitpotle peppers,minced,salsa</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_3EhZbxwO5VuljQ6P7DI4M4L-t69NfOgEdg&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color:rgb(190, 91, 91);">Easy Vegan Tacos</h5>
+                <p class="card-text">Black beans,taco seasoning,textured vegetable protein,salsa verdde,refried
+                  beans,sour cream,soy sauce,corn tortillas,olive oil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="icon">
+
+      <div class="fb">
+        <i class="fa-brands fa-facebook fa-2xl"></i>
+      </div>
+      <div class="insta">
+        <i class="fa-brands fa-instagram fa-2xl"></i>
+      </div>
+      <div class="twitter">
+        <i class="fa-brands fa-twitter fa-2xl"></i>
+      </div>
+      <div class="git">
+        <i class="fa-brands fa-github fa-2xl"></i>
+      </div>
+    </div>
+
+
+</body>
+
+</html>
